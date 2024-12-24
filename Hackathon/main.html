@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+        .header .title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .profile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .profile span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .teacher-description {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .profile:hover .teacher-description {
+            display: block;
+        }
+        .teacher-description p {
+            margin: 5px 0;
+        }
+        .notification {
+            position: relative;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .notification-logo {
+            font-size: 24px;
+        }
+        .notification-list {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .notification:hover .notification-list {
+            display: block;
+        }
+        .notification-list p {
+            margin: 5px 0;
+        }
+        .menu {
+            position: relative;
+        }
+        .menu button {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .menu-options {
+            display: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            list-style: none;
+            padding: 10px 0;
+            margin: 0;
+            width: 250px;
+        }
+        .menu-options li {
+            padding: 10px 20px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .menu-options li:hover {
+            background-color: #f0f0f0;
+        }
+        .menu-options .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+        .menu-options li:hover .submenu {
+            display: block;
+        }
+        .submenu p {
+            margin: 5px 0;
+        }
+        .submenu p:hover {
+            background-color: #e9e9e9;
+            cursor: pointer;
+        }
+        .submenu .add-video {
+            display: none;
+            margin-top: 5px;
+        }
+        .submenu p:hover + .add-video {
+            display: block;
+        }
+        .submenu .student-list {
+            display: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        .submenu p:hover + .student-list {
+            display: block;
+        }
+        .student-list div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+        .student-list button {
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f4f4f4;
+        }
+        .student-list button:hover {
+            background-color: #e0e0e0;
+        }
+        .menu:hover .menu-options {
+            display: block;
+        }
+        .search-bar {
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .rating {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .rating span {
+            font-size: 24px;
+            color: gold;
+            cursor: pointer;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ccc;
+        }
+        .nav div {
+            cursor: pointer;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        .nav div:hover {
+            background-color: #e0e0e0;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid #ccc;
+            background-color: #f4f4f4;
+        }
+        .footer div {
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer div:hover {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu">
+            <button>☰</button>
+            <ul class="menu-options">
+                <li>
+                    Add Demo Video
+                    <div class="submenu">
+                        <p>Class 1</p>
+                        <div class="add-video">Add Video Option</div>
+                        <p>Class 2</p>
+                        <div class="add-video">Add Video Option</div>
+                        <p>Class 3</p>
+                        <div class="add-video">Add Video Option</div>
+                        <p>Class 7</p>
+                        <div class="add-video">Add Video Option</div>
+                    </div>
+                </li>
+                <li>
+                    Fee
+                    <div class="submenu">
+                        <p>Payment Received This Month: 45000 INR</p>
+                    </div>
+                </li>
+                <li>
+                    Attendance
+                    <div class="submenu">
+                        <p>Class 1</p>
+                        <div class="student-list">
+                            <div>
+                                <span>Shuvayan Ghosh</span>
+                                <button>Present</button>
+                                <button>Absent</button>
+                            </div>
+                            <div>
+                                <span>Monojit Mondal</span>
+                                <button>Present</button>
+                                <button>Absent</button>
+                            </div>
+                        </div>
+                        <p>Class 2</p>
+                        <div class="student-list">
+                            <div>
+                                <span>Shuvayan Ghosh</span>
+                                <button>Present</button>
+                                <button>Absent</button>
+                            </div>
+                            <div>
+                                <span>Monojit Mondal</span>
+                                <button>Present</button>
+                                <button>Absent</button>
+                            </div>
+                        </div>
+                        <p>Class 3</p>
+                        <div class="student-list">
+                            <div>
+                                <span>Shuvayan Ghosh</span>
+                                <button>Present</button>
+                                <button>Absent</button>
+                            </div>
+                            <div>
+                                <span>Monojit Mondal</span>
+                                <button>Present</button>
+                                <button>Absent</button>
+                            </div>
+                        </div>
+                        <p>Class 7</p>
+                        <div class="student-list">
+                            <div>
+                                <span>Shuvayan Ghosh</span>
+                                <button>Present</button>
+                                <button>Absent</button>
+                            </div>
+                            <div>
+                                <span>Monojit Mondal</span>
+                                <button>Present</button>
+                                <button>Absent</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Add Resources
+                    <div class="submenu">
+                        <p>Class 1</p>
+                        <p>Class 2</p>
+                        <p>Class 3</p>
+                        <p>Class 7</p>
+                    </div>
+                </li>
+                <li>
+                    Paste Link for Class
+                    <div class="submenu">
+                        <p>Class 1</p>
+                        <p>Class 2</p>
+                        <p>Class 3</p>
+                        <p>Class 7</p>
+                    </div>
+                </li>
+                <li>
+                    Give Remarks
+                    <div class="submenu">
+                        <p>Class 1</p>
+                        <p>Class 2</p>
+                        <p>Class 3</p>
+                        <p>Class 7</p>
+                    </div>
+                </li>
+                <li>Sign Out</li>
+            </ul>
+        </div>
+        <img src="logo.png.png" height="50" width="50">
+        <div style="margin-left: 1300px;">
+        
+        <span class="title">EduCampus</span>
+
+         </div>
+        <div class="notification">
+            <span class="notification-logo">🔔 </span>
+            <div class="notification-list">
+                <p>Notification 1</p>
+                <p>Notification 2</p>
+                <p>Notification 3</p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="Teacher.jpg" alt="Profile Picture">
+            <span>Monosij Das</span>
+            <div class="teacher-description">
+                <p>Aadhar Number: 1234-5678-9012</p>
+                <p>Qualification: MSc in Mathematics</p>
+                <p>Location: Delhi, India</p>
+                <p>Experience: 10 years</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+    </div>
+
+    <div class="rating">
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>☆</span>
+        <p>Rating: 4.2</p>
+    </div>
+
+    <div class="nav">
+        <div>Home</div>
+        <div>Class</div>
+        <div>Student</div>
+    </div>
+
+    <div class="footer">
+        <div><a href="home.html">🏠 Home</a></div>
+        <div><a href="class.html">📚 Class</a></div>
+        <div><a href="student.html">👨‍🎓 Student</a></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .container {
+            padding: 2rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 1rem 0;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .student-list {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .student-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .student-list li {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+    </style>
+    <script>
+        function showStudents() {
+            const studentLists = document.querySelectorAll('.student-list');
+            studentLists.forEach(list => list.style.display = 'none');
+
+            const selectedClass = document.getElementById('classSelector').value;
+            if (selectedClass) {
+                document.getElementById(selectedClass).style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Student</h1>
+    </header>
+
+    <div class="container">
+        <select id="classSelector" onchange="showStudents()">
+            <option value="">Select a Class</option>
+            
+          
+
+            <option value="class1">Class 1</option>
+            <option value="class2">Class 2</option>
+            <option value="class3">Class 3</option>
+            <option value="class4">Class 4</option>
+        </select>
+
+       <div id="class1" class="student-list">
+            <ul>
+                <li>Student 1</li>
+                <li>Student 2</li>
+                <li>Student 3</li>
+                <li>Student 4</li>
+                <li>Student 5</li>
+                <li>Student 6</li>
+                <li>Student 7</li>
+                <li>Student 8</li>
+                <li>Student 9</li>
+                <li>Student 10</li>
+            </ul>
+        </div>
+
+        
+        <div id="class2" class="student-list">
+            <ul>
+                <li>Student 1</li>
+                <li>Student 2</li>
+                <li>Student 3</li>
+                <li>Student 4</li>
+                <li>Student 5</li>
+                <li>Student 6</li>
+                <li>Student 7</li>
+                <li>Student 8</li>
+                <li>Student 9</li>
+                <li>Student 10</li>
+            </ul>
+        </div>
+
+        <div id="class3" class="student-list">
+            <ul>
+                <li>Student 1</li>
+                <li>Student 2</li>
+                <li>Student 3</li>
+                <li>Student 4</li>
+                <li>Student 5</li>
+                <li>Student 6</li>
+                <li>Student 7</li>
+                <li>Student 8</li>
+                <li>Student 9</li>
+                <li>Student 10</li>
+            </ul>
+        </div>
+
+        <div id="class4" class="student-list">
+            <ul>
+                <li>Student 1</li>
+                <li>Student 2</li>
+                <li>Student 3</li>
+                <li>Student 4</li>
+                <li>Student 5</li>
+                <li>Student 6</li>
+                <li>Student 7</li>
+                <li>Student 8</li>
+                <li>Student 9</li>
+                <li>Student 10</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

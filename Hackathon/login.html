@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Education Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .role-selection {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            display: none; /* Hide forms initially */
+        }
+    </style>
+    <script>
+        function showForm(role) {
+            // Hide all forms
+            document.getElementById('teacher-form').style.display = 'none';
+            document.getElementById('student-form').style.display = 'none';
+
+            // Show the selected form
+            if (role === 'teacher') {
+                document.getElementById('teacher-form').style.display = 'block';
+            } else if (role === 'student') {
+                document.getElementById('student-form').style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div style="text-align: center;">
+    <img src="logo.png.png" height="50" width="50">
+    </div> 
+    <h1>EduCampus</h1>
+    <div class="role-selection">
+        <h2>Select Your Role</h2>
+        <button onclick="showForm('teacher')">Log in as Teacher</button>
+        <button onclick="showForm('student')">Log in as Student</button>
+    </div>
+
+    <div id="teacher-form" class="form-section">
+        <h2>Teacher Registration</h2>
+        <form action="/submit-teacher" method="POST">
+            <label for="teacher-name">Name:</label>
+            <input type="text" id="teacher-name" name="name" required>
+
+            <label for="teacher-email">Email:</label>
+            <input type="email" id="teacher-email" name="email" required>
+
+            <label for="teacher-phone">Phone Number:</label>
+            <input type="tel" id="teacher-phone" name="phone" required>
+
+            <label for="teacher-gender">Gender:</label>
+            <select id="teacher-gender" name="gender" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <a href="teacherdetails.html">Submit</a>
+        </form>
+        
+    </div>
+
+    <div id="student-form" class="form-section">
+        <h2>Student Registration</h2>
+        <form action="/submit-student" method="POST">
+            <label for="student-name">Name:</label>
+            <input type="text" id="student-name" name="name" required>
+
+            <label for="student-email">Email:</label>
+            <input type="email" id="student-email" name="email" required>
+
+            <label for="student-phone">Phone Number:</label>
+            <input type="tel" id="student-phone" name="phone" required>
+
+            <label for="student-gender">Gender:</label>
+            <select id="student-gender" name="gender" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                </select>
+                <a href="studentdetails.html">Submit</a>
+        </form>
+    </div>
+    
+
+                
